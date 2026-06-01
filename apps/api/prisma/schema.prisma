@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Place {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  lat         Float
+  lng         Float
+  category    Category
+  country     String
+  city        String?
+  description String
+  legend      String
+  spookyScore Int      @default(3)
+  images      Json     @default("[]")
+  sourceUrl   String?
+  isVerified  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  collectionPlaces CollectionPlace[]
+}
+
+model Collection {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  coverImage  String?
+  themeColor  String   @default("#8B5CF6")
+  viewCount   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  places CollectionPlace[]
+}
+
+model CollectionPlace {
+  id           String     @id @default(cuid())
+  collection   Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  collectionId String
+  place        Place      @relation(fields: [placeId], references: [id])
+  placeId      String
+  personalNote String?
+  order        Int        @default(0)
+  addedAt      DateTime   @default(now())
+
+  @@unique([collectionId, placeId])
+}
+
+enum Category {
+  CEMETERY
+  HAUNTED_HOUSE
+  BATTLEFIELD
+  ASYLUM
+  CURSED_PLACE
+  URBAN_LEGEND
+}
