@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "turbo run dev",
+    "dev:web": "turbo run dev --filter @memento-mori/web",
+    "dev:api": "turbo run dev --filter @memento-mori/api",
+    "dev:mobile": "turbo run dev --filter @memento-mori/mobile",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "type-check": "turbo run type-check"
@@ -16,5 +19,5 @@
     "node": ">=20.0.0",
     "pnpm": ">=9.0.0"
   },
-  "packageManager": "pnpm@9.0.0"
+  "packageManager": "pnpm@9.15.9"
 }

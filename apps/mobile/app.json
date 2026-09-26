@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Memento Mori",
+    "slug": "memento-mori",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "mementomori",
+    "userInterfaceStyle": "dark",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mementomori.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#09090F"
+      },
+      "package": "com.mementomori.app"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-status-bar",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#09090F"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
