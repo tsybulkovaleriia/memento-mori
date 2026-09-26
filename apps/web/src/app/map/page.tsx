@@ -1,11 +1,11 @@
 "use client";
 
+import { MapView } from "@/components/map/MapView";
+
 export default function MapPage() {
   return (
-    <div className="flex h-screen w-screen items-center justify-center bg-bg-base">
-      <p className="font-serif text-2xl text-text-secondary">
-        Map coming soon...
-      </p>
-    </div>
+    <main style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
+      <MapView />
+    </main>
   );
 }
